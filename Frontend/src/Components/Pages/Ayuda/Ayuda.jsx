@@ -4,118 +4,181 @@ const sections = [
   {
     title: "📌 ¿Qué es TIC Americas?",
     content: `
-      TIC Americas es un sistema de verificación de precios diseñado para supermercados y tiendas con puntos de venta (POS). 
-      Su objetivo es facilitar la gestión de productos y publicidad, permitiendo a los administradores manejar el inventario de forma eficiente.
-      
-      🔹 **Usuarios del sistema**:
-      - **Administradores**: Empresas que gestionan productos, publicidad y stock.
-      - **Usuarios finales**: Solo pueden consultar información de productos, sin modificar datos.
-      
-      🔹 **Funciones clave de la plataforma**:
-      - Administración de productos con precios fijos y categorías personalizables.
-      - Gestión de publicidad dinámica a través de un slider.
-      - Lector de códigos QR para obtener información detallada de cada producto.
-      - Importación y exportación de productos desde archivos Excel.
-      - Interfaz completamente responsiva y adaptable a cualquier dispositivo.
+TIC Americas es un sistema integral diseñado para la verificación de precios y la gestión completa de productos, publicidad y procesos de venta en supermercados y tiendas con puntos de venta. La plataforma está pensada para optimizar la administración de inventario, publicidad y operaciones de caja, ofreciendo una experiencia intuitiva y segura tanto para administradores como para usuarios finales.
+
+Principales características:
+- Gestión de productos (crear, editar, eliminar y visualizar).
+- Administración de publicidad mediante categorías y archivos multimedia.
+- Procesos de venta y actualización de stock mediante lector de códigos QR/barra.
+- Autenticación robusta con roles diferenciados y recuperación de contraseña.
+- Importación y exportación de productos mediante archivos Excel.
+- Interfaz responsiva y moderna, con animaciones y feedback visual.
     `
   },
   {
-    title: "🛠️ Inicio de Sesión y Registro",
+    title: "🛠️ Autenticación, Registro y Recuperación",
     content: `
-      El acceso a TIC Americas está protegido mediante autenticación JWT. 
-      
-      🔹 **Cómo iniciar sesión**:
-      - Ingresa tu **correo electrónico** y **contraseña** en la pantalla de inicio de sesión.
-      - Si los datos son correctos, accederás al panel de administración.
-      - Si olvidaste tu contraseña, podrás restablecerla mediante un enlace de recuperación.
+El acceso al sistema se realiza mediante un proceso de autenticación basado en JSON Web Tokens (JWT). Esto garantiza que solo usuarios autorizados puedan acceder a las funcionalidades.
 
-      🔹 **Cómo registrarse**:
-      - Los **administradores** deben registrar una cuenta junto con la información de su empresa.
-      - Los **usuarios normales** solo pueden registrarse con su información personal.
-      - Al completar el registro, recibirás un acceso inmediato a la plataforma.
+• **Inicio de Sesión:**  
+  - Ingresa tu correo, contraseña y selecciona tu rol (Usuario o Admin).  
+  - Para administradores, se solicita además una contraseña especial de admin.  
+  - Opción "Recuérdame" para mantener la sesión iniciada.
 
-      ⚠️ **Solo los administradores pueden gestionar productos y publicidad. Los usuarios solo pueden ver información.**
+• **Registro:**  
+  - Los administradores deben registrarse proporcionando los datos de la empresa.  
+  - Los usuarios finales se registran con sus datos personales.
+
+• **Recuperación y Restablecimiento de Contraseña:**  
+  - Si olvidaste tu contraseña, utiliza la opción “¿Olvidaste tu contraseña?” para recibir instrucciones vía email.  
+  - En la pantalla de “Restablecer Contraseña” se valida el token recibido y se permite ingresar y confirmar una nueva contraseña.
     `
   },
   {
     title: "📦 Gestión de Productos",
     content: `
-      Los administradores pueden agregar, editar y eliminar productos desde el panel de control. Cada producto tiene:
-      
-      - **SKU único**: Identificador exclusivo del producto.
-      - **Nombre y descripción**: Información detallada del artículo.
-      - **Imagen del producto**: Puede subirse directamente desde el sistema.
-      - **Precio fijo**: No cambia automáticamente (los administradores deben actualizarlo manualmente).
-      - **Categoría**: Agrupación de productos por tipo.
-      
-      🔹 **Acciones disponibles**:
-      - **Agregar productos**: Rellena los campos necesarios y sube una imagen.
-      - **Editar productos**: Modifica la información de productos existentes.
-      - **Eliminar productos**: Remueve productos de la base de datos (acción irreversible).
-      
-      📌 **IMPORTANTE:** 
-      - Solo los administradores pueden modificar productos.
-      - Los usuarios solo pueden visualizar información de los productos.
+Los administradores tienen acceso al módulo de productos, donde se pueden realizar las siguientes acciones:
+
+• **Agregar Producto:**  
+  - Ingresar SKU, nombre, descripción, precio, categoría e imagen.  
+  - Se valida la información antes de enviar los datos al servidor.
+
+• **Editar Producto:**  
+  - Actualiza los detalles del producto, incluyendo cambios en precio, descripción y categoría.
+
+• **Eliminar Producto:**  
+  - Remueve de forma definitiva un producto. Esta acción es irreversible.
+
+• **Importación/Exportación:**  
+  - **Importar:** Utiliza una plantilla Excel predefinida para cargar múltiples productos a la vez.  
+  - **Exportar:** Genera un archivo Excel con la lista actual de productos, facilitando la gestión masiva.
+  
+Nota: Los usuarios finales solo tienen permiso para visualizar los productos.
     `
   },
   {
-    title: "📢 Administración de Publicidad",
+    title: "📢 Administración de Publicidad y Configuración del Programa",
     content: `
-      Los administradores pueden gestionar anuncios publicitarios que se mostrarán en un **slider dinámico** en la plataforma.
-      
-      🔹 **Cómo funciona la publicidad**:
-      - Se agrupan en **categorías** (ejemplo: "Promociones", "Nuevos Productos", "Impresoras").
-      - Las imágenes o videos subidos en una categoría aparecen en el slider en **el orden en que fueron agregadas**.
-      - No hay opción de horarios programados; la publicidad se muestra de forma continua.
+Este módulo permite gestionar toda la publicidad que se mostrará en la plataforma, a través de un proceso centralizado denominado “Iniciar Programa”.
 
-      🔹 **Acciones disponibles**:
-      - **Crear nuevas categorías** de publicidad.
-      - **Subir imágenes/videos** promocionales dentro de una categoría.
-      - **Eliminar o modificar anuncios** si es necesario.
-      
-      ⚠️ **Solo los administradores pueden gestionar la publicidad.**
+• **Configuración de Categorías:**  
+  - Crea, edita y elimina categorías para agrupar anuncios.  
+  - Cada categoría se asocia a archivos multimedia (imágenes y videos).
+
+• **Carga y Validación de Archivos:**  
+  - Sube archivos (con validación de tipos permitidos) para cada categoría.  
+  - Se muestran vistas previas de los archivos cargados y se pueden gestionar mediante un panel interactivo.
+  
+• **Inicio del Programa:**  
+  - El programa solo se puede iniciar si al menos una categoría cuenta con archivos válidos.  
+  - Al iniciar, se almacena la categoría seleccionada en el localStorage y se redirige a la vista de “programa”.
+  
+• **Panel de Categorías Activas:**  
+  - Permite visualizar y gestionar (eliminar o modificar) las categorías que están en uso.
     `
   },
   {
-    title: "📋 Importación y Exportación de Productos",
+    title: "💳 Caja y Procesos de Venta",
     content: `
-      TIC Americas permite gestionar productos a gran escala mediante archivos **Excel**.
-      
-      🔹 **Opciones disponibles**:
-      - **Importar productos** desde un archivo Excel con un formato predefinido.
-      - **Exportar la lista de productos** actuales en un archivo Excel.
+El módulo de Caja está diseñado para agilizar el proceso de venta en puntos de venta físicos y virtuales.
 
-      🔹 **Cómo importar productos**:
-      1. Descarga la plantilla de Excel desde la plataforma.
-      2. Llena la información siguiendo las columnas establecidas.
-      3. Carga el archivo en la sección de "Importación".
-      4. El sistema validará los datos y agregará los productos automáticamente.
+• **Búsqueda de Productos:**  
+  - Permite escanear o introducir manualmente el código de barras/QR para recuperar la información del producto.  
+  - Se muestra nombre, descripción, precio, stock y foto (o un placeholder si no hay imagen).
 
-      🔹 **Cómo exportar productos**:
-      - Simplemente haz clic en "Exportar" y el sistema generará un archivo Excel con la lista de productos.
-
-      📌 **IMPORTANTE:** Si el archivo importado tiene errores de formato, el sistema lo notificará antes de procesarlo.
+• **Proceso de Venta (Solo para Administradores):**  
+  - Activa un modo de venta que permite indicar la cantidad de unidades a vender.  
+  - Se solicita confirmación antes de proceder con la actualización del stock en el backend.
+  
+• **Alertas y Feedback:**  
+  - Mensajes emergentes informan sobre errores (como stock insuficiente o problemas con el token) y confirmaciones de ventas exitosas.
     `
   },
   {
-    title: "📍 Lector de Códigos QR",
+    title: "📋 Importación y Exportación Masiva",
     content: `
-      El sistema cuenta con un lector de códigos QR que permitirá a los usuarios y administradores obtener información rápida de los productos.
+El sistema facilita la gestión masiva de productos mediante el uso de archivos Excel.
 
-      🔹 **Cómo funciona**:
-      - Se puede utilizar la **cámara del celular** o un **lector de códigos QR** externo.
-      - Al escanear un producto, se mostrará **toda su información**:
-        - Nombre
-        - SKU
-        - Foto del producto
-        - Descripción
-        - Precio
+• **Importación:**  
+  - Descarga la plantilla Excel con el formato preestablecido.  
+  - Completa la información de productos respetando las columnas indicadas.  
+  - Sube el archivo y el sistema lo procesa, validando la integridad y formato de los datos.
 
-      🔹 **Acciones disponibles para administradores**:
-      - **Consultar stock** en tiempo real.
-      - **Ajustar existencias** directamente desde la interfaz.
+• **Exportación:**  
+  - Genera y descarga un archivo Excel que contiene todos los productos actualmente registrados, lo que facilita la actualización o respaldo de la información.
+  
+En caso de errores en el formato, el sistema notificará y evitará la carga de datos incompletos.
+    `
+  },
+  {
+    title: "📍 Lector de Códigos QR y Barras",
+    content: `
+Para mejorar la experiencia de consulta, TIC Americas integra un lector de códigos QR y de barras.
 
-      📌 **Actualmente en desarrollo.**
+• **Funcionamiento:**  
+  - Utiliza la cámara del dispositivo o un lector externo para escanear el código.  
+  - Al ser escaneado, se despliega una ventana con toda la información del producto (nombre, SKU, descripción, precio, imagen y stock).
+
+• **Funcionalidades Adicionales (Modo Admin):**  
+  - Permite consultar y, en algunos casos, ajustar el stock en tiempo real.
+  
+Actualmente, se sigue trabajando para ampliar las capacidades del lector y optimizar su rendimiento.
+    `
+  },
+  {
+    title: "🧭 Navegación, Acceso y Diseño Responsivo",
+    content: `
+El sistema ha sido desarrollado con React y Tailwind CSS, lo que garantiza un diseño moderno, adaptativo y con transiciones suaves.
+
+• **Header y Menú:**  
+  - El header muestra el logo de TIC Americas y un menú de navegación que se adapta al tamaño de pantalla.  
+  - Opciones disponibles incluyen “Inicio”, “Publicidad”, “Lector QR”, “Productos”, “Perfil” y “Ayuda”.  
+  - En dispositivos móviles se utiliza un menú hamburguesa para facilitar la navegación.
+
+• **Rutas y Acceso Condicional:**  
+  - Algunas rutas, como “/programa”, ocultan el header para una experiencia inmersiva.  
+  - El contenido y las opciones del menú varían según el rol del usuario (admin o usuario final).
+
+• **Feedback Visual y Animaciones:**  
+  - Cada acción (como clics o transiciones entre secciones) cuenta con animaciones y cambios de color que mejoran la experiencia del usuario.
+    `
+  },
+  {
+    title: "👤 Gestión de Perfil y Configuración Personal",
+    content: `
+El módulo de Perfil permite a los usuarios y administradores gestionar su información personal y configurar ciertos aspectos de la cuenta.
+
+• **Visualización y Edición de Datos:**  
+  - Actualiza información personal (nombre, correo, etc.) y, en el caso de administradores, los datos de la empresa.  
+  - Posibilidad de cambiar la contraseña de forma segura.
+
+• **Preferencias y Configuración:**  
+  - Ajusta configuraciones personales como notificaciones o preferencias de visualización.
+  
+Esta sección asegura que cada usuario tenga control sobre su propia información y experiencia en la plataforma.
+    `
+  },
+  {
+    title: "🔧 Detalles Técnicos y Soporte",
+    content: `
+TIC Americas está basado en tecnologías modernas y robustas:
+
+• **Arquitectura:**  
+  - Frontend desarrollado en React, utilizando Context API para gestionar la autenticación y estado global.  
+  - Estilos implementados con Tailwind CSS para un diseño responsivo y moderno.
+
+• **Seguridad:**  
+  - Comunicación segura con el backend a través de API REST y autenticación JWT.  
+  - Validación de datos en cada solicitud y uso de middlewares para el manejo de errores.
+
+• **Actualizaciones y Soporte:**  
+  - El sistema se actualiza constantemente para incorporar nuevas funcionalidades y mejoras.  
+  - En caso de incidencias o dudas, se recomienda contactar al equipo de soporte técnico.
+
+• **Integración con Backend:**  
+  - Todas las operaciones (CRUD, subida de archivos, autenticación, etc.) se realizan a través de llamadas API que garantizan la integridad y seguridad de la información.
+  
+Esta sección está destinada a usuarios avanzados y administradores que deseen conocer más sobre la infraestructura y políticas de soporte del sistema.
     `
   }
 ];
